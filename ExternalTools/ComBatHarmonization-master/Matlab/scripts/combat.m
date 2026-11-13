@@ -5,7 +5,7 @@
 
 
 
-function bayesdata = combat(dat, batch, mod, parametric)
+function [bayesdata, estimates] = combat(dat, batch, mod, parametric)
     [sds] = std(dat')';
     wh = find(sds==0);
     [ns,ms] = size(wh);
@@ -122,6 +122,29 @@ function bayesdata = combat(dat, batch, mod, parametric)
 		j = j+1;
 	end
 	bayesdata = (bayesdata.*(sqrt(var_pooled)*repmat(1,1,n_array)))+stand_mean;
+
+    % Return ComBat parameter estimates
+    estimates = struct();
+
+    % Initial estimates
+    estimates.gamma_hat  = gamma_hat;
+    estimates.delta_hat  = delta_hat;
+
+    % Empirical Bayes estimates
+    estimates.gamma_star = gamma_star;
+    estimates.delta_star = delta_star;
+    
+    % Prior distributions
+    estimates.gamma_bar  = gamma_bar;
+    estimates.t2         = t2;
+    
+    estimates.a_prior    = a_prior;
+    estimates.b_prior    = b_prior;
+    
+    % Additional information
+    estimates.batch      = batch;
+    estimates.levels     = levels;
+    estimates.n_batches  = n_batches;
 
 end
 

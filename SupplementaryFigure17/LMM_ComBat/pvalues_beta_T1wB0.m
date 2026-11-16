@@ -104,6 +104,6 @@ for i = 1:nSes
     end
 end
 
-exportgraphics(fig,sprintf('pvalues_beta_%s.eps', ...
+exportgraphics(fig,sprintf('pvalues_beta_T1wB0.eps', ...
                            metricLabel),'ContentType','vector');
 end

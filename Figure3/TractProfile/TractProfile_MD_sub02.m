@@ -21,7 +21,7 @@ for subIdx = 1:numel(subjects)
         % Load prop data
         filePath = fullfile(baseDir1, subjectID, sessionID, prop);
         prop_data = readmatrix(filePath);
-        md(1:100, sesIdx) = prop_data(1:100, 15);
+        md(1:100, sesIdx) = prop_data(1:100, 3);
     end
 end
 for subIdx = 1:numel(subjects)
